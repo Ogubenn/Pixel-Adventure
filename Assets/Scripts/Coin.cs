@@ -40,6 +40,7 @@ public class Coin : MonoBehaviour
 
     void OnDestroy()
     {
+        //OnDestroy methodu nesne yokedilmeden önce yapılması gereken işlemleri yapan bir fonksiyondur.Nesne yok edildiğinde çağırılan özel bir fonksiyondur.
         PlayerPrefs.Save(); //Değişiklikleri PlayerPrefs'a kaydet
     }
 

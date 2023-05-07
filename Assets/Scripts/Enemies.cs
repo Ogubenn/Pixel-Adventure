@@ -11,9 +11,6 @@ public class Enemies : MonoBehaviour
     public float EnemyDestroy = 4f; // Enemy Destroy olma süresi
     public static float  PlayerDestroy = 4f; // Player Destroy olma süresi
      public static bool isDead = false; // İsDead boolu
-
-     private int EnemyDeadScore = 0;
-
      
      [SerializeField] AudioSource PlayerHitSound;
      [SerializeField] AudioSource EnemyHitSound;
@@ -30,14 +27,17 @@ public class Enemies : MonoBehaviour
     }
 #endregion
 
+#region Slime Ölme
+
     void OnCollisionEnter2D(Collision2D collision)
 {
-    #region Slime Ölme
+    
     if (collision.gameObject.CompareTag("Player"))
     {   
         
-        if (collision.gameObject.GetComponent<Collider2D>().IsTouching(headCollider.GetComponent<Collider2D>()))
+        if (collision.gameObject.GetComponent<Collider2D>().IsTouching(headCollider.GetComponent<Collider2D>()))//Collison nesnesine ait olan yani playerın colliderıyla düşmanın head colliderı arasında temas varmı diye kontrol eder.Temas varsa true olur ve Düşman öölür.
         {
+            //IsTouching fonksiyonu collidera sahip bir objenin,başka bir collidera sahip obje ile temas halinde olup olmadığının bilgisini verir.Phyisc kütüphanesinin parçasıdır.Boolendır,iki nesne temas halindeyse true döner.
             Debug.Log("Düşman Öldürme Çalıştı.");
             EnemyHitSound.Play();
             isDead = true;
@@ -52,9 +52,10 @@ public class Enemies : MonoBehaviour
     if (collision.gameObject.CompareTag("Player") && !(collision.gameObject.GetComponent<Collider2D>().IsTouching(headCollider.GetComponent<Collider2D>())))
     {
         HealtMAnager.healt--;
-        GameObject.Find("Player").transform.position = PlayerTransform.startPosition;
-        if (HealtMAnager.healt == 0)
+        GameObject.Find("Player").transform.position = PlayerTransform.startPosition;//Playerımızı start pozisyonuna ışınlıyoruz.
+        if (HealtMAnager.healt <= 0)
         {
+            //Eğer healt 0 a eşit ve daha küçükse Level0 yüklenir Gameobject destroy olur.
             Debug.Log("Level0Yüklemeifinegirdi");
             PlayerHitSound.Play();
             Destroy(playerAnimator.gameObject,PlayerDestroy);

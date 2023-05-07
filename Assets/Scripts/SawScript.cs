@@ -10,13 +10,13 @@ public class SawScript : MonoBehaviour
      [SerializeField] GameObject kan;
      public static Animator playerAnimator;
 
-
+#region Sawın dokunma işlemleri
     private void OnCollisionEnter2D(Collision2D other) 
     {
         if (other.gameObject.name == "Player")
         {
-            HealtMAnager.healt--;
-            GameObject.Find("Player").transform.position = PlayerTransform.startPosition;
+            HealtMAnager.healt--;//can azalt
+            GameObject.Find("Player").transform.position = PlayerTransform.startPosition;//pozisyonu başa sıfırla
             StartCoroutine(ShowKanFor3Seconds());
 
         }
@@ -29,10 +29,16 @@ public class SawScript : MonoBehaviour
             
         }
     }
+
+    #endregion
+
+    #region Show blood
     private IEnumerator ShowKanFor3Seconds()
 {
-   kan.SetActive(true); // Show the "kan" sprite
-    yield return new WaitForSeconds(1.5f); // Wait for 3 seconds
-    kan.SetActive(false); // Hide the "kan" sprite
+   kan.SetActive(true); // Kan spriteI true yap ekranda göster
+    yield return new WaitForSeconds(1.5f); // 3 cm
+    kan.SetActive(false); // kan spritını gizle
 }
-}
+#endregion
+
+}//class

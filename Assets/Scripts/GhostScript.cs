@@ -53,7 +53,7 @@ public class GhostScript : MonoBehaviour
         if (playerRigidbody != null)
         {
             Debug.Log("ife girdi");
-            Vector2 forceDirection = (force.transform.position - transform.position).normalized;
+            Vector2 forceDirection = (force.transform.position - transform.position).normalized;//normlized vectörün yönünü korurken büyüklüğünü normalleştirir.Hız vectörünü kullanmak sorunlara yok açabilir.
             playerRigidbody.AddForce(forceDirection * geriGit, ForceMode2D.Impulse);
 
             /*"force" adlı bir nesnenin konumu ile kendi konumunun farkını alarak, yön vektörünü "forceDirection" değişkenine atar. Daha sonra, "geriGit" değişkeninin değeri ile çarpılmış "forceDirection" vektörü, "ForceMode2D.Impulse" kullanarak "playerRigidbody" üzerinde bir itme kuvveti olarak uygulanır.*/

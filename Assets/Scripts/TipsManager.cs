@@ -16,9 +16,9 @@ public class TipsManager : MonoBehaviour
     {
         while (true)
         {
-            int randomIndex = Random.Range(0, tips.Length);
-            tipsText.text = tips[randomIndex];
-            yield return new WaitForSeconds(5f);
+            int randomIndex = Random.Range(0, tips.Length);//Random.Range belirtilen iki sayı arasında rastgele sayı üretir.Dizi uzunluğu ile 0 arasında rastegele sayı belirler.
+            tipsText.text = tips[randomIndex];//texte rondom indexi yaz
+            yield return new WaitForSeconds(5f);// 5 saniye bekle
         }
     }
 }

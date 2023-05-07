@@ -20,7 +20,8 @@ public class Flag : MonoBehaviour
         //GetAktiveScene ile o an bulunduğumuz sceenin indexini alırız. + 1 ile toplayıp nextSceneIndex değişkenine eşitleriz.Ve sonra SceeneManagerda LoadScene ile o indexteki sceene çağırırz.
         if(nextSceneIndex + 1 == 12)
         {
-            SceneManager.LoadScene("Level0");
+            Debug.Log("Oyun Bitti");
+            SceneManager.LoadScene("Level0");//Eğer oyunun son levelındaysak ve flage dokunduysak oyun level0 ı yükleyerek oyunnu bitirir.
         }
     }
 }//class

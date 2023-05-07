@@ -15,15 +15,16 @@ public class PlantsScripts : MonoBehaviour
     {
         if(Time.time >= nextFireTime)
         {
+            //Time.time oyun başladıktan sonra geçen süreyi saniye cinsinden belirtir.
             Fire();
             nextFireTime = Time.time + fireRate;
         }
     }
     void Fire()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);//UInstantiate parametreleri neyi oluşturcağımız,positionu ve rotationu.
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
-        rb.AddForce(-firePoint.right * bulletSpeed, ForceMode2D.Impulse);
+        rb.AddForce(-firePoint.right * bulletSpeed, ForceMode2D.Impulse);//Impulse nesneye anlık olarak kuvvet uygular.
         Destroy(bullet, 5f);
 
         /*"Instantiate", Unity oyun motorunda yeni bir nesne veya öğe oluşturmak için kullanılan bir fonksiyondur. Bu fonksiyon, prefabsların oluşturur ve bu kopyayı sahneye veya hiyerarşiye ekler.*/

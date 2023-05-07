@@ -54,7 +54,8 @@ public class MainMenu : MonoBehaviour
     #endregion
 
     private void OnDestroy()
-    {
+    {   
+        //OnDestroy metodu bi gameobject yok olduğunda oluşan özel fonksiyondur.
         // Oyuncunun son kaldığı sahne bilgisini kaydedin
         PlayerPrefs.SetInt("SavedSceneIndex", SceneManager.GetActiveScene().buildIndex);
     }
